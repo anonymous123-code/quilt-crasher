@@ -1,0 +1,40 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "io.github.anonymous123_code",
+		"id": "quilt_crasher",
+		"version": "${version}",
+		"metadata": {
+			"name": "Quilt Crasher",
+			"description": "Crashes Quilt under configurable circumstances",
+			"contributors": {
+				"anonymous123-code": "Owner"
+			},
+			"contact": {
+				"homepage": "https://anonymous123-code.github.io/",
+				"issues": "https://github.com/anonymous123-code/quilt-crasher/issues",
+				"sources": "https://github.com/anonymous123-code/quilt-crasher"
+			},
+			"icon": "assets/quilt_crasher/icon.png"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "io.github.anonymous123_code.quilt_crasher.QuiltCrasher"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.19.1"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=7.0.2"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.20"
+			}
+		]
+	},
+	"mixin": "quilt_crasher.mixin.json"
+}
