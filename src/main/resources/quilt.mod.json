@@ -15,7 +15,8 @@
 				"issues": "https://github.com/anonymous123-code/quilt-crasher/issues",
 				"sources": "https://github.com/anonymous123-code/quilt-crasher"
 			},
-			"icon": "assets/quilt_crasher/icon.png"
+			"icon": "assets/quilt_crasher/icon.png",
+			"license": "MIT"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {

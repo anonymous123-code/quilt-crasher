@@ -15,3 +15,7 @@ There is a [Config File](./src/main/java/io/github/anonymous123_code/quilt_crash
 Additionally, there is functionality to generate dummy mods. It is configurable
 - How many mods should be generated
 - If the button to trigger generation should be shown at all
+
+---
+
+[View Quilt Crasher on Modrinth](https://modrinth.com/mod/quilt-crasher)
