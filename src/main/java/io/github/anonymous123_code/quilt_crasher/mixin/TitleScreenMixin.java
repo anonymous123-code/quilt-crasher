@@ -14,8 +14,8 @@ import static io.github.anonymous123_code.quilt_crasher.QuiltCrasher.config;
 public class TitleScreenMixin {
 	@Inject(method = "render", at = @At("TAIL"))
 	private void onTitleScreenShow(CallbackInfo ci) {
-		if (QuiltCrasher.shouldCrash && config.crashPhase.getRealValue() == QuiltCrasherConfig.Phase.TITLE_SCREEN) {
-			throw new RuntimeException(config.crashMessage.getRealValue());
+		if (QuiltCrasher.shouldCrash && config.crash.phase.getRealValue() == QuiltCrasherConfig.Phase.TITLE_SCREEN) {
+			throw new RuntimeException(config.crash.message.getRealValue());
 		}
 	}
 }

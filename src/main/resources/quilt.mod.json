@@ -6,7 +6,7 @@
 		"version": "${version}",
 		"metadata": {
 			"name": "Quilt Crasher",
-			"description": "Crashes Quilt under configurable circumstances",
+			"description": "Utility to debug mods handling crashes. Can intentionally crash Quilt under configurable circumstances.",
 			"contributors": {
 				"anonymous123-code": "Owner"
 			},

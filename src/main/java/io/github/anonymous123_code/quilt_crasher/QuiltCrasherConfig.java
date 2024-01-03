@@ -6,26 +6,35 @@ import org.quiltmc.config.api.values.TrackedValue;
 import org.quiltmc.config.api.values.ValueList;
 
 public class QuiltCrasherConfig extends ReflectiveConfig {
-	@Comment("The time the crash should occur.")
-	public final TrackedValue<Phase> crashPhase = value(Phase.TITLE_SCREEN);
+	public final ModGeneration modGeneration = new ModGeneration();
+	public final Crash crash = new Crash();
+	public static class ModGeneration extends Section {
 
-	@Comment({
-		"A list of all mods required for crashing.",
-		"Mimics a n-way incompatibility with quilt crasher: When any one of them (including quilt crasher) is not present, nothing happens.",
-		"If all are present, the game crashes. (Unless crashUnless is fulfilled)"
-	})
-	public final TrackedValue<ValueList<String>> requiredForCrashing = value(ValueList.create("", "dummy_mod_0"));
+		public final TrackedValue<Boolean> showGenerationButton = value(true);
+		public final TrackedValue<Integer> modCount = value(10);
+	}
 
-	@Comment({
-		"A list of all mods required for the game *not to crash*,",
-		"even if all mods provided in requiredForCrashing are present.",
-		"Only applies if not empty."})
-	public final TrackedValue<ValueList<String>> crashUnless = value(ValueList.create(""));
+	public static class Crash extends Section {
+		@Comment("The time the crash should occur.")
+		public final TrackedValue<Phase> phase = value(Phase.TITLE_SCREEN);
+
+		@Comment({
+			"A list of all mods required for crashing.",
+			"Mimics a n-way incompatibility with quilt crasher: When any one of them (including quilt crasher) is not present, nothing happens.",
+			"If all are present, the game crashes. (Unless unlessRequirements is fulfilled)"
+		})
+		public final TrackedValue<ValueList<String>> requirements = value(ValueList.create("", "dummy_mod_0"));
+
+		@Comment({
+			"A list of all mods required for the game *not to crash*,",
+			"even if all mods provided in requirements are present.",
+			"Only applies if not empty."})
+		public final TrackedValue<ValueList<String>> unlessRequirements = value(ValueList.create(""));
 
 
-	@Comment("The message in the exception thrown")
-	public final TrackedValue<String> crashMessage = value("This is a super important incompatibility /s (Intentionally crashing)");
-
+		@Comment("The message in the exception thrown")
+		public final TrackedValue<String> message = value("This is a super important incompatibility /s (Intentionally crashing)");
+	}
 	public enum Phase {
 		MOD_INIT,
 		TITLE_SCREEN,
