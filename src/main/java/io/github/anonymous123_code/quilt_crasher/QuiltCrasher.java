@@ -39,7 +39,7 @@ public class QuiltCrasher implements ModInitializer {
 			LOGGER.warn("Quilt crasher present. Instance may crash intentionally.");
 		}
 		config = QuiltConfig.create(mod.metadata().id(), "main", QuiltCrasherConfig.class);
-		shouldCrash = config.crash.requirements.getRealValue().stream().allMatch(QuiltLoader::isModLoaded) && !(config.crash.unlessRequirements.getRealValue().stream().allMatch(QuiltLoader::isModLoaded) && !config.crash.unlessRequirements.getRealValue().isEmpty());
+		shouldCrash = config.crash.requirements.getRealValue().stream().anyMatch(it -> it.stream().allMatch(QuiltLoader::isModLoaded)) && !(config.crash.unlessRequirements.getRealValue().stream().allMatch(QuiltLoader::isModLoaded) && !config.crash.unlessRequirements.getRealValue().isEmpty());
 		if (shouldCrash)
 			switch (config.crash.phase.getRealValue()) {
 				case MOD_INIT -> {

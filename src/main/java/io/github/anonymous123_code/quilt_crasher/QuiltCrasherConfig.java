@@ -19,11 +19,11 @@ public class QuiltCrasherConfig extends ReflectiveConfig {
 		public final TrackedValue<Phase> phase = value(Phase.TITLE_SCREEN);
 
 		@Comment({
-			"A list of all mods required for crashing.",
-			"Mimics a n-way incompatibility with quilt crasher: When any one of them (including quilt crasher) is not present, nothing happens.",
+			"A list of possible crash requirements if all mod ids in one of the inner lists are present, the game crashes.",
+			"Mimics multiple n-way incompatibilities with quilt crasher: When none of the inner list match (or quilt crasher is not present), nothing happens.",
 			"If all are present, the game crashes. (Unless unlessRequirements is fulfilled)"
 		})
-		public final TrackedValue<ValueList<String>> requirements = value(ValueList.create("", "dummy_mod_0"));
+		public final TrackedValue<ValueList<ValueList<String>>> requirements = value(ValueList.create(ValueList.create(""), ValueList.create("", "dummy_mod_0")));
 
 		@Comment({
 			"A list of all mods required for the game *not to crash*,",
